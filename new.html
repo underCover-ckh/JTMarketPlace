@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JT-Store</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fefefe;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: rgb(16, 12, 70);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .profile {
+      background-color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+
+    }
+
+    .profile img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+
+    #product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .product h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .product p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .product button {
+      margin-top: 10px;
+      background-color: rgb(16, 12, 70);
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 18%;
+      left: 80%;
+      transform: translate(-50%, -20%);
+      background-color: white;
+      padding: 20px;
+      border: 2px solid rgb(16, 12, 70);
+      border-radius: 10px;
+      z-index: 10;
+    }
+
+    .popup input {
+      display: block;
+      margin: 10px 0;
+      padding: 8px;
+      width: 100%;
+    }
+
+    .popup button {
+      background-color: rgb(16, 12, 70);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>JT Store</h1>
+    <div class="profile" onclick="togglePopup()">
+      <i id="user-picture" class='bx bx-user-circle' style="font-size: x-large; padding: 0 2px;"></i>
+      <span id="profile-name"></span>
+    </div>
+  </header>
+
+  <div id="product-list"></div>
+ 
+  <!-- Profile Edit Popup -->
+  <div class="popup" id="popup-form">
+    <h3>Edit Profil</h3>
+    <input type="text" id="nameInput" placeholder="Nama baru">
+    <input type="text" id="imgInput" placeholder="URL gambar profil">
+    <button onclick="updateProfile()">Simpan</button>
+  </div>
+
+  <script>
+    const products = [
+      { id: 1, name: "Keyboard", price: 50000, image: "https://via.placeholder.com/200x150?text=Kaos+Polos" },
+      { id: 2, name: "mouse", price: 250000, image: "https://via.placeholder.com/200x150?text=Sneakers" },
+      { id: 3, name: "microphone", price: 150000, image: "https://via.placeholder.com/200x150?text=Tas+Ransel" },
+      { id: 4, name: "cable data", price: 175000, image: "https://via.placeholder.com/200x150?text=Jam+Tangan" },
+      { id: 5, name: "mouse0 pad", price: 80000, image: "https://via.placeholder.com/200x150?text=Kacamata" },
+      { id: 6, name: "speaker", price: 120000, image: "https://via.placeholder.com/200x150?text=Dompet" },
+      { id: 7, name: "Headset Bluetooth", price: 220000, image: "https://via.placeholder.com/200x150?text=Headset" },
+      { id: 8, name: "Power Bank", price: 160000, image: "https://via.placeholder.com/200x150?text=Power+Bank" }
+    ];
+
+    const list = document.getElementById('product-list');
+    products.forEach(p => {
+      const item = document.createElement('div');
+      item.className = 'product';
+      item.innerHTML = `
+        <img src="${p.image}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <p>Rp${p.price.toLocaleString()}</p>
+        <button onclick="alert('Ditambahkan ke keranjang: ${p.name}')">Tambah ke Keranjang</button>
+      `;
+      list.appendChild(item);
+    });
+
+    function togglePopup() {
+      const popup = document.getElementById('popup-form');
+      popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function updateProfile() {
+      const name = document.getElementById('nameInput').value;
+      const img = document.getElementById('imgInput').value;
+      if (name) document.getElementById('profile-name').innerText = name;
+      if (img) document.getElementById('profile-pic').src = img;
+      togglePopup();
+    }
+  </script>
+</body>
+</html>
