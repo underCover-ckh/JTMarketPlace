@@ -1,0 +1,227 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s, color 0.3s;
+  }
+  .h1{
+    color: #202124;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: darkblue;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .header-left, .header-center, .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .hamburger {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-right: 1rem;
+  }
+  
+  .title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: white;
+  }
+  
+  .search-bar {
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    border: none;
+    width: 300px;
+    text-align: center;
+  }
+
+  /* Style untuk search container */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        /* Style dasar search bar */
+        .search-bar {
+            width: 300px;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        /* Style saat search bar aktif/difokus */
+        .search-bar:focus {
+            width: 400px;
+            border-color: #2c3e50;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Style untuk placeholder text */
+        .search-bar::placeholder {
+            color: #aaa;
+            transition: opacity 0.2s ease;
+        }
+        
+        /* Menghilangkan placeholder saat diketik */
+        .search-bar:focus::placeholder {
+            opacity: 0;
+        }
+  
+  .mode-toggle {
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  #sidebar {
+    width: 220px;
+    background: darkblue;
+    position: fixed;
+    top: 0;
+    left: -220px;
+    height: 100vh;
+    padding-top: 4rem;
+    transition: left 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  #sidebar.active {
+    left: 0;
+  }
+  
+  #sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #sidebar ul li {
+    padding: 15px 20px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  #sidebar ul li:hover {
+    background: blue;
+  }
+  .content {
+    padding: 2rem;
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    justify-content: center;
+  }
+  .product {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  .product img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+   footer {
+    padding: 2rem;
+    background: darkblue;
+    color: white;
+    margin-top: 2rem;
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .footer-container > div {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .footer-container h1,
+  .footer-container h4 {
+    margin-bottom: 1rem;
+  }
+  
+  .footer-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-container a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-container a:hover {
+    text-decoration: underline;
+  }
+  
+  body.light-mode {
+    background: #202124;
+    color: white;
+  }
+  body.light-mode #sidebar {
+    background: #202124;
+    color: white;
+  }
+  
+  body.light-mode .product {
+    background: darkblue;
+    color: white;
+    border: 1px solid blue;
+  }
+  body.light-mode .search-bar{
+    background: #202124;
+    color: white;
+  }
+   body.light-mode #sidebar ul li:hover {
+    background: darkblue;
+     }
+     .mode-toggle:hover {
+      transform: rotate(20deg);
+      transition: transform 0.3s;
+     }
+
+
+     
+
+     
+    
