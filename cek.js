@@ -1,72 +1,27 @@
-function toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active");
-  }
-  
-  function toggleDarkMode() {
-    document.body.classList.toggle("light-mode");
-  
-    const icon = document.getElementById("mode-icon");
-    if (document.body.classList.contains("light-mode")) {
-      icon.classList.remove("fa-moon");
-      icon.classList.add("fa-sun");
-    } else {
-      icon.classList.remove("fa-sun");
-      icon.classList.add("fa-moon");
-    }
-  }
-  
-  function productClick(element, url) {
-    element.style.transform = "scale(0.95)";
-    setTimeout(() => {
-      window.location.href = url;
-    }, 150);
-    setTimeout(() => {
-      element.style.transform = "scale(1)";
-    }, 150);
-  }
-  
-   document.getElementById("searchInput").addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      searchProduct();
-    }
-  });
-  
-  // Fungsi fuzzy search yang lebih baik
+
 function fuzzySearch(pattern, text) {
-  pattern = pattern.toLowerCase().replace(/\s+/g, '');
-  text = text.toLowerCase().replace(/\s+/g, '');
+  pattern = pattern.toLowerCase().trim();
+  text = text.toLowerCase().trim();
+  
+  if (!pattern) return true;
   
   let patternIndex = 0;
-  for (let i = 0; i < text.length && patternIndex < pattern.length; i++) {
+  for (let i = 0; i < text.length; i++) {
     if (text[i] === pattern[patternIndex]) {
       patternIndex++;
+      if (patternIndex === pattern.length) return true;
     }
   }
-  return patternIndex === pattern.length;
+  return false;
 }
 
-// Fungsi pencarian utama
 function searchBarang() {
   const input = document.getElementById("searchInput");
   const keyword = input.value.trim();
   const products = document.querySelectorAll(".product");
   
-  // Reset semua produk jika pencarian kosong
-  if (!keyword) {
-    products.forEach(product => {
-      product.style.display = "flex";
-      product.style.opacity = "1";
-      product.style.height = "auto";
-      product.style.margin = "";
-      product.style.padding = "";
-      product.style.border = "";
-    });
-    return;
-  }
-
-  let bestMatch = null;
-  let bestScore = 0;
-
+  let hasMatch = false;
+  
   products.forEach(product => {
     const productName = product.querySelector("p").textContent;
     const isMatch = fuzzySearch(keyword, productName);
@@ -78,30 +33,7 @@ function searchBarang() {
       product.style.margin = "";
       product.style.padding = "";
       product.style.border = "";
-      
-      // Hitung skor kecocokan
-      let score = 0;
-      let patternPos = 0;
-      let prevMatchPos = -1;
-      
-      for (let i = 0; i < productName.length && patternPos < keyword.length; i++) {
-        if (productName[i].toLowerCase() === keyword[patternPos].toLowerCase()) {
-          // Beri nilai lebih tinggi untuk karakter berurutan
-          if (prevMatchPos === i - 1) {
-            score += 5; 
-          } else {
-            score += 2;
-          }
-          prevMatchPos = i;
-          patternPos++;
-        }
-      }
-      
-      // Simpan produk dengan skor tertinggi
-      if (score > bestScore) {
-        bestScore = score;
-        bestMatch = product;
-      }
+      hasMatch = true;
     } else {
       product.style.display = "none";
       product.style.opacity = "0";
@@ -112,29 +44,56 @@ function searchBarang() {
     }
   });
 
-  // Scroll ke produk terbaik jika ditemukan
-  if (bestMatch) {
-    bestMatch.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
+  if (!hasMatch && keyword) {
+    const productsContainer = document.querySelector(".products");
+    const noResults = document.createElement("div");
+    noResults.className = "no-results";
+    noResults.textContent = "Produk tidak ditemukan";
+    noResults.style.gridColumn = "1 / -1";
+    noResults.style.textAlign = "center";
+    noResults.style.padding = "2rem";
     
-    // Highlight produk terbaik
-    bestMatch.classList.add("best-match");
-    setTimeout(() => {
-      bestMatch.classList.remove("best-match");
-    }, 1000);
+    const existingNoResults = document.querySelector(".no-results");
+    if (existingNoResults) {
+      existingNoResults.remove();
+    }
+    
+    productsContainer.appendChild(noResults);
+  } else {
+    const existingNoResults = document.querySelector(".no-results");
+    if (existingNoResults) {
+      existingNoResults.remove();
+    }
   }
 }
 
-// Optimasi dengan debounce
 let searchTimeout;
 document.getElementById("searchInput").addEventListener("input", function() {
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(searchBarang, 300);
 });
 
-// Inisialisasi event listener untuk product click (jika diperlukan)
+function toggleSidebar() {
+  document.getElementById("sidebar").classList.toggle("active");
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle("light-mode");
+
+  const icon = document.getElementById("mode-icon");
+  if (document.body.classList.contains("light-mode")) {
+    icon.classList.remove("fa-moon");
+    icon.classList.add("fa-sun");
+  } else {
+    icon.classList.remove("fa-sun");
+    icon.classList.add("fa-moon");
+  }
+}
+
 function productClick(element, url) {
-  window.open(url, '_blank');
+  element.style.transform = "scale(0.95)";
+  setTimeout(() => {
+    window.open(url, '_blank');
+    element.style.transform = "scale(1)";
+  }, 150);
 }

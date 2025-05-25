@@ -46,42 +46,36 @@ body {
     text-align: center;
   }
 
-  /* Style untuk search container */
-        .search-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
+  .search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  .search-bar {
+    width: 300px;
+    padding: 12px 20px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
         
-        /* Style dasar search bar */
-        .search-bar {
-            width: 300px;
-            padding: 12px 20px;
-            border: 2px solid #ddd;
-            border-radius: 25px;
-            outline: none;
-            font-size: 16px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
+  .search-bar:focus {
+    width: 400px;
+    border-color: #2c3e50;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
         
-        /* Style saat search bar aktif/difokus */
-        .search-bar:focus {
-            width: 400px;
-            border-color: #2c3e50;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
+  .search-bar::placeholder {
+    color: #aaa;
+    transition: opacity 0.2s ease;
+  }
         
-        /* Style untuk placeholder text */
-        .search-bar::placeholder {
-            color: #aaa;
-            transition: opacity 0.2s ease;
-        }
-        
-        /* Menghilangkan placeholder saat diketik */
-        .search-bar:focus::placeholder {
-            opacity: 0;
-        }
+  .search-bar:focus::placeholder {
+    opacity: 0;
+  }
   
   .mode-toggle {
     font-size: 1.2rem;
@@ -219,9 +213,154 @@ body {
       transform: rotate(20deg);
       transition: transform 0.3s;
      }
+.no-results {
+  color: #666;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
 
+body.light-mode .no-results {
+  color: #ccc;
+}
 
-     
+/* Perbaikan styling search bar */
+.header-center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
 
-     
-    
+.search-bar {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  border: 2px solid #ddd;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+  border-color: #2c3e50;
+  box-shadow: 0 0 5px rgba(44, 62, 80, 0.3);
+}
+
+body.light-mode .search-bar {
+  background: #202124;
+  color: white;
+  border-color: #444;
+}
+
+body.light-mode .search-bar:focus {
+  border-color: #666;
+}
+
+/* Header Styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: darkblue;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-left, .header-center, .header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  flex: 1;
+  min-width: 120px;
+}
+
+.header-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.header-right {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.hamburger {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: white;
+}
+
+/* Search Bar Styles */
+.search-bar {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+body.light-mode .search-bar {
+  background: #202124;
+  color: white;
+}
+
+/* Product Styles */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.product {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  background: #f9f9f9;
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.product p {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+body.light-mode .no-results {
+  color: #ccc;
+}
