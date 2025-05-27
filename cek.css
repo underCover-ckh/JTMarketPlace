@@ -12,7 +12,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background: darkblue;
+    background: #0066FF; 
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -28,13 +28,11 @@ body {
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Style untuk item sidebar aktif */
 #sidebar ul li.active {
   background: rgba(255, 255, 255, 0.1);
   border-left: 3px solid white;
 }
 
-/* Style untuk overlay */
 #sidebar-overlay {
   position: fixed;
   top: 0;
@@ -91,7 +89,7 @@ body {
   .search-bar {
     width: 300px;
     padding: 12px 20px;
-    border: 2px solid #ddd;
+    border: 2px solid #A0A0A0; 
     border-radius: 25px;
     outline: none;
     font-size: 16px;
@@ -101,12 +99,12 @@ body {
         
   .search-bar:focus {
     width: 400px;
-    border-color: #2c3e50;
+    border-color: #0066FF; /* Changed to primary color */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
         
   .search-bar::placeholder {
-    color: #aaa;
+    color: #A0A0A0; 
     transition: opacity 0.2s ease;
   }
         
@@ -124,7 +122,7 @@ body {
   
   #sidebar {
     width: 220px;
-    background: darkblue;
+    background: #0066FF; 
     position: fixed;
     top: 0;
     left: -220px;
@@ -152,7 +150,7 @@ body {
   }
   
   #sidebar ul li:hover {
-    background: blue;
+    background: #8A2BE2;
   }
   .content {
     padding: 2rem;
@@ -168,7 +166,7 @@ body {
     justify-content: center;
   }
   .product {
-    border: 1px solid #ddd;
+    border: 1px solid #A0A0A0; 
     border-radius: 10px;
     padding: 1rem;
     text-align: center;
@@ -180,6 +178,7 @@ body {
   .product:hover {
     transform: scale(1.05);
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+    border-color: #8A2BE2;
   }
   
   .product img {
@@ -189,7 +188,7 @@ body {
   }
    footer {
     padding: 2rem;
-    background: darkblue;
+    background: #0066FF; 
     color: white;
     margin-top: 2rem;
   }
@@ -223,6 +222,7 @@ body {
   
   .footer-container a:hover {
     text-decoration: underline;
+    color: #8A2BE2;
   }
   
   body.light-mode {
@@ -235,23 +235,24 @@ body {
   }
   
   body.light-mode .product {
-    background: darkblue;
+    background: #0066FF; 
     color: white;
-    border: 1px solid blue;
+    border: 1px solid #8A2BE2;
   }
   body.light-mode .search-bar{
     background: #202124;
     color: white;
   }
    body.light-mode #sidebar ul li:hover {
-    background: darkblue;
+    background: #8A2BE2;
      }
      .mode-toggle:hover {
       transform: rotate(20deg);
       transition: transform 0.3s;
+      color: #8A2BE2;
      }
 .no-results {
-  color: #666;
+  color: #A0A0A0;
   font-size: 1.2rem;
   margin-top: 2rem;
 }
@@ -272,14 +273,14 @@ body.light-mode .no-results {
   max-width: 500px;
   padding: 0.5rem 1rem;
   border-radius: 25px;
-  border: 2px solid #ddd;
+  border: 2px solid #A0A0A0;
   outline: none;
   font-size: 1rem;
   transition: all 0.3s ease;
 }
 
 .search-bar:focus {
-  border-color: #2c3e50;
+  border-color: #0066FF; /* Changed to primary color */
   box-shadow: 0 0 5px rgba(44, 62, 80, 0.3);
 }
 
@@ -299,7 +300,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: darkblue;
+  background: #0066FF; 
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -354,7 +355,7 @@ header {
 }
 
 .search-bar:focus {
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 5px rgba(0, 102, 255, 0.5); /* Changed to primary color */
 }
 
 body.light-mode .search-bar {
@@ -371,7 +372,7 @@ body.light-mode .search-bar {
 }
 
 .product {
-  border: 1px solid #ddd;
+  border: 1px solid #A0A0A0;
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
@@ -395,7 +396,7 @@ body.light-mode .search-bar {
   grid-column: 1 / -1;
   text-align: center;
   padding: 2rem;
-  color: #666;
+  color: #A0A0A0;
 }
 
 body.light-mode .no-results {

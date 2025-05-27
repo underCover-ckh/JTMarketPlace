@@ -42,7 +42,7 @@
         header {
             text-align: center;
             padding: 2rem 0;
-            background: linear-gradient(135deg, var(--base-color), var(--secondary-color));
+            background: linear-gradient(135deg, #0066FF, #9400FF);
             color: var(--text-color);
             box-shadow: var(--box-shadow);
             position: relative;
@@ -50,8 +50,7 @@
         }
 
         .text-head {
-            background-color: var(--accent-color);
-            color: var(--base-color);
+            color: white;
             margin: 0.5rem auto;
             padding: 0.5rem 2rem;
             border-radius: 30px;
@@ -128,7 +127,6 @@
 
         .content {
             flex: 2;
-            background-color: white;
             padding: 2rem;
             border-radius: 15px;
             box-shadow: var(--box-shadow);
@@ -158,7 +156,6 @@
 
         .produk {
             flex: 1.5;
-            background-color: white;
             padding: 2rem;
             border-radius: 15px;
             box-shadow: var(--box-shadow);
